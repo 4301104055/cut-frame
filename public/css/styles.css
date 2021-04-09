@@ -1,0 +1,186 @@
+
+header{
+	color: white;
+	background-color:pink;
+	text-align: center;
+	font-family: verdana;
+	font-size: 40px;
+	background-image: ../img/images.jpg;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+}
+.index_blocks {
+    padding-top: 35px;
+}
+.index_articles, .index_blocks {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+div {
+    display: block;
+}
+
+
+
+body, td, th {
+    font-family: "Open Sans",sans-serif;
+    color: #333;
+    line-height: 1.618;
+}
+body, html {
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+}
+body{
+	background-color:#738fea !important;
+}
+.index_blocks .block .cnt {
+    text-align: center;
+}
+.index_blocks .block .cnt .h {
+    font-weight: 600;
+    margin-bottom: 4px;
+    font-size: 16px;
+}
+.index_blocks .block .cnt .p {
+    font-size: 13px;
+    font-weight: 400;
+}
+.index_blocks .block {
+    width: 25%;
+}
+.index_blocks .block {
+    margin-right: 0;
+    box-sizing: border-box;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 35px;
+}
+.img_content{
+	width:80px;
+	height:80px;
+}
+.cnt{
+	border: 2px solid;
+	border-color: black;
+	border-radius: 12px;
+	background-color: white;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+#myModel{
+	text-align:center;
+
+}

@@ -1,0 +1,267 @@
+/* heander */
+.header {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  color: #333;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.header .header-main {
+  position: relative;
+  width: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+  box-shadow: 0 1px 0 0 rgba(0,0,0,.06);
+}
+
+.container {
+  width: 100%;
+  max-width: 1160px!important;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.header .header-inner {
+  position: relative;
+  display: -webkit-box;
+  display: flex;
+}
+  
+.header .logo {
+  -webkit-box-flex: 1;
+  flex: 1 1 auto;
+  margin-right: 20px;
+}
+
+#img {
+  width: 200px;
+}
+
+.header .navigation {
+  z-index: 1080;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-top: 60px;
+  color: #333;
+
+  font-size: 15px;
+  line-height: 24px;
+ 
+}
+.menu1{
+  padding: 10px;
+}
+.text-center {
+  text-align: center!important;
+}
+ .title h1 {
+   margin-bottom: 12px; 
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  font-size: 59px;
+}
+/* Change the link color to #111 (black) on hover */
+
+.index_blocks {
+    padding-top: 35px;
+}
+.index_articles, .index_blocks {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+body, td, th {
+    font-family: "Open Sans",sans-serif;
+    color: #333;
+    line-height: 1.618;
+}
+body, html {
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+}
+body{
+	background-color:white !important;
+}
+.index_blocks .block .cnt {
+    text-align: center;
+}
+.index_blocks .block .cnt .h {
+    font-weight: 600;
+    margin-bottom: 4px;
+    font-size: 16px;
+}
+.index_blocks .block .cnt .p {
+    font-size: 13px;
+    font-weight: 400;
+}
+.index_blocks .block {
+    width: 25%;
+}
+.index_blocks .block {
+    margin-right: 0;
+    box-sizing: border-box;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 35px;
+}
+.img_content{
+	width:80px;
+  height:80px;
+  padding: 10px;
+}
+.cnt{
+	border: 2px solid;
+	border-color: black;
+	border-radius: 12px;
+	background-color: white;
+}
+.imgcut{
+	width:100%;
+    max-width:100px;
+}
+	
+.cell{
+  background: #fff;
+  height: auto;
+    text-align: center;
+    padding: 10px 35px;
+
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    background-size: 1200px auto;
+}	
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+#myModel{
+	text-align:center;
+
+}
+
+
+/* Change the link color to #111 (black) on hover nghia */
+
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  float: left;
+}
+
+li a, .dropbtn {
+  display: inline-block;
+ 
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover{
+  background-color: blue;
+  color: white;
+  text-decoration: none;
+  transition-duration: 0.4s;
+}
+
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+
+
+
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.menu{
+  padding-bottom: 50px;
+}
+
+.btn-group-lg>.btn, .btn-lg{
+width: 200px;
+}
+
+
+
+/* thanh dieu huong */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+li a {
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.dh{
+  width: auto;
+    background: black;
+    height: 50px;
+}
+ ul {
+  margin-bottom:0px;
+}
+#xemanh{
+  float: right;
+}

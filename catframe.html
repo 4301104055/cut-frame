@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Web demo video</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="container">
+        </br></br>
+        <h1 style="text-align= center;">
+            Online cut frame video
+        </h1>
+        <form action="/convert" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <input type="file" name="file" />
+            </div>
+            <div class="form-group">
+                <label for="frame">So frame/s:</label>
+                <textarea name="frame"></textarea>
+            </div>
+            <br />
+            <div class="form-group">
+                <button  class="btn btn-danger btn-block">
+                    Cut Frame
+                </button>
+            </div>
+        </form>
+        <table>
+            <thead>
+                <tr>STT</tr>
+                <tr>Hình</tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

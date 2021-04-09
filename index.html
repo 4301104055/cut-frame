@@ -1,0 +1,835 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Web demo video</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="css/config.css">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+
+			/*<script>
+				$(document).ready(function(){
+					$(".cnt").mouseover(function () {
+						$(".cnt").css("transform", "rotate(20deg)");
+					});
+				  $(".cnt").mouseout(function(){
+					$(".cnt").css("background-color", "lightgray");
+				  });
+				});
+			</script>
+	<script>
+		document.getElementById("myBtn").onclick = function() {myFunction()};
+		function myFunction() {
+		document.getElementById("myDropdown").classList.toggle("show");
+		}
+	</script>
+	<style>
+		.dropdown-content {
+			display: none;
+			position: absolute;
+			background-color: #d9534f;
+			min-width: 160px;
+			overflow: auto;
+			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		}
+
+			.dropdown-content a {
+				color: black;
+				padding: 12px 16px;
+				text-decoration: none;
+				display: block;
+			}
+
+		.show {
+			display: block;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- HEADER cua trang web-->
+
+	
+	<header class="header">
+		<div class="header-main">
+			<div class="container">
+				<div class="header-inner">
+					<div class="logo">
+						<a href="http://localhost:4000"> 
+							<img src="./img/logo.jpg" id="img">
+						</a>
+					</div>
+					
+					<div class="navigation">
+						<nav>
+							<ul>
+									<li style="padding-right: 10px;">
+										<a href="/">Liên Hệ</a>
+									</li>
+									<li style="padding-right: 10px;">
+										<a href="/">Hỗ trợ</a>
+									</li>
+							</ul>
+						</nav>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- Thanh dieu huong navigation -->
+	<!-- Thanh dieu huong navigation chỉnh sửa thành thanh cuốn-->
+	<div class="dh">
+		<ul>
+			<li><a class="active" href="#home" style="color: white;">Trang chủ</a></li>
+			<li id="xemanh">
+				<a class="active" href="http://localhost:3333/" style="color: white;" target="_blank">Xem ảnh</a>
+			</li>
+			<li id="xemanh">
+				<a class="active" href="/xoaanh" style="color: white;">Xóa hết ảnh đã cắt</a>
+			</li>
+	  	</ul>
+		<nav>
+			<ul>
+				<li class="dropdown">
+			  <a class="dropbtn" style="color: white;">Chức năng</a>
+			  <div class="dropdown-content">
+				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Chuyển định dạng</button>
+				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalcut">Cắt frame</button>
+				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalresize">Resize</button>
+				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalcutvideo">Cắt video</button>
+				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalnoaudio">Xóa âm thanh</button>
+				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myCodecModal">Chỉnh codec</button>
+				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalwatermark">Thêm Watermark</button>
+				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalBit">Chỉnh bitrate</button>
+				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myFPS">Chỉnh fps</button>
+				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalAddAudio">Thêm âm thanh</button>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalmerge">Gộp video</button> -->
+			  </div>
+			</li>
+		  </ul>
+		</nav>
+	</div>
+
+
+	<!-- Main page -->
+	<div class="container">
+		<!-- Trigger the modal with a button -->
+		<!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Chuyển định dạng</button>-->
+
+		<!--Chuyen dinh dang Modal -->
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog modal-sm">
+				<div class="container1">
+					</br></br>
+					<h1 style="text-align: center;">
+						Chuyển đổi định dạng
+					</h1>
+					<form action="/convert" method="post" enctype="multipart/form-data">
+						<div class="form-group">
+							<input type="file" name="file" onchange="changeHandlercdd(event)"/>
+							<video id="chuyendinhdang" width="300" height="240" controls src="" style="display:none" />
+						</div>
+						<div class="form-group">
+							<label for="to">Định dạng mới:</label>
+							<select class="form-control" name="to">
+								<option>mp4</option>
+								<option>flv</option>
+								<option>avi</option>
+								<option>mov</option>
+							</select>
+							<div class="form-group">
+								<label for="nameoutput">Tên output:</label>
+								<input name="nameoutput">
+							</div>
+						</div>
+						<br />
+						<div class="form-group">
+							<button class="btn btn-danger btn-block" data-rel="back" data-transition="flow">
+								Chuyển định dạng
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+
+		<!--Cat frame Modal -->
+		<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalcut">Cắt frame</button> -->
+		<div class="modal fade" id="myModalcut" role="dialog">
+			<div class="modal-dialog modal-sm">
+				<div class="container1">
+					</br></br>
+					<h1 style="text-align: center;">
+						Cắt frame từ video
+					</h1>
+					<form action="/cutframe" method="post" enctype="multipart/form-data">
+						<div class="form-group">
+							<input type="file" name="file" onchange="changeHandlercatframe(event)"/>
+							<video id="cf" width="300" height="240" controls src="" style="display:none" />
+						</div>
+						<div class="form-group">
+							<label for="frame">Số frame/s:</label>
+							<input name="frame">
+							
+						</div>
+						<br />
+						<div class="form-group">
+							<div class="dropdown">
+
+
+								<button onclick="myFunction()" class="btn btn-danger btn-block" id="myBtn">
+									Cắt Frame
+								</button>
+								
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!--Chinh speed Modal -->
+		<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalresize">Resize</button> -->
+		<div class="modal fade" id="myModalresize" role="dialog">
+			<div class="modal-dialog modal-sm">
+				<div class="container1">
+					</br></br>
+					<h1 style="text-align: center;">
+						Resize video
+					</h1>
+					<form action="/resize" method="post" enctype="multipart/form-data">
+						<div class="form-group">
+							<input type="file" name="file" onchange="changeHandlerkichthuoc(event)" />
+							<video id="kichthuoc" width="300" height="240" controls src="" style="display:none" />
+						</div>
+						<div class="form-group">
+							<label for="frame">Chiều dài:</label>
+							<input name="height">
+							<label for="frame">Chiều rộng:</label>
+							<input name="width">
+							<div class="form-group">
+								<label for="nameoutput">Tên output:</label>
+								<input name="nameoutput">
+							</div>
+						</div>
+						<br />
+						<div class="form-group">
+							<button class="btn btn-danger btn-block" data-rel="back" data-transition="flow">
+								Resize
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+
+		<!--Gop Modal -->
+		<!--Cat video -->
+	<!-- 	<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalcutvideo">Cắt video</button> -->
+		<div class="modal fade" id="myModalcutvideo" role="dialog">
+			<div class="modal-dialog modal-sm">
+				<div class="container1">
+					</br></br>
+					<h1 style="text-align: center;">
+						Cắt video
+					</h1>
+					<form action="/cutvideo" method="post" enctype="multipart/form-data">
+						<div class="form-group">
+							<input type="file" name="file" onchange="changeHandlercatvideo(event)" />
+							<video id="catvideo" width="300" height="240" controls src="" style="display:none" />
+						</div>
+						<div class="form-group">
+							<label for="frame">Thời điểm đầu:</label>
+							<input name="start">
+							<label for="frame">Thời điểm cuối:</label>
+							<input name="end">
+							<div class="form-group">
+								<label for="nameoutput">Tên output:</label>
+								<input name="nameoutput">
+							</div>
+							
+						</div>
+						<br />
+						<div class="form-group">
+							<button class="btn btn-danger btn-block" data-rel="back" data-transition="flow">
+								Cắt
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!--Xoa am thanh Modal -->
+		<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalnoaudio">Xóa âm thanh</button> -->
+		<div class="modal fade" id="myModalnoaudio" role="dialog">
+			<div class="modal-dialog modal-sm">
+				<div class="container1">
+					</br></br>
+					<h1 style="text-align: center;">
+						Xóa âm thanh video
+					</h1>
+					<form action="/noaudio" method="post" enctype="multipart/form-data">
+						<div class="form-group">
+							<input type="file" name="file" onchange="changeHandlerxoaam(event)"/>
+							<video id="xoaam" width="300" height="240" controls src="" style="display:none" />
+							
+						</div>
+						<div class="form-group">
+							<label for="nameoutput">Tên output:</label>
+							<input name="nameoutput">
+						</div>
+						<br />
+						<div class="form-group">
+							<button class="btn btn-danger btn-block" data-rel="back" data-transition="flow">
+								Xóa
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!-- Trigger the modal with a button -->
+		<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myCodecModal">Chỉnh codec</button> -->
+
+		<!--setCodec Modal -->
+		<div class="modal fade" id="myCodecModal" role="dialog">
+			<div class="modal-dialog modal-sm">
+				<div class="container1">
+					</br></br>
+					<h1 style="text-align: center;">
+						Chỉnh codec video
+					</h1>
+					<form action="/chinhcodec" method="post" enctype="multipart/form-data">
+						<div class="form-group">
+							<input type="file" name="file" onchange="changeHandlercoodec(event)"/>
+							<video id="coodec" width="300" height="240" controls src="" style="display:none" />
+						</div>
+						<div class="form-group">
+							<label for="codec">Codec:</label>
+							<select class="form-control" name="codec">
+								<option>libx264</option>
+								<option>libopenjpeg</option>
+								<option>libxvid</option>
+								<option>mjpeg</option>
+								<option>libx265</option>
+							</select>
+							<div class="form-group">
+								<label for="nameoutput">Tên output:</label>
+								<input name="nameoutput">
+							</div>
+						</div>
+						<br />
+						<div class="form-group">
+							<button class="btn btn-danger btn-block" data-rel="back" data-transition="flow">
+								Chỉnh codec
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!--Watermark -->
+		<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalwatermark">Add Watermark</button> -->
+		<div class="modal fade" id="myModalwatermark" role="dialog">
+			<div class="modal-dialog modal-sm">
+				<div class="container1">
+					</br></br>
+					<h1 style="text-align: center;">
+						Watermark
+					</h1>
+					<form action="/watermark" method="post" enctype="multipart/form-data">
+						<div class="form-group">
+							Chọn Video<input type="file" name="filevideo" onchange="changeHandlerwater(event)" />
+							<video id="water" width="300" height="240" controls src="" style="display:none" />
+						</div>
+						<div class="form-group">
+							Chọn Watermark<input type="file" name="filewm" />
+						</div>
+
+						<label for="position">Chọn hướng:</label>
+						<select class="form-control" name="position">
+							<option>NE</option>
+							<option>NC</option>
+							<option>NW</option>
+							<option>SE</option>
+							<option>SC</option>
+							<option>SW</option>
+							<option>C</option>
+							<option>CE</option>
+							<option>CW</option>
+						</select>
+						<div class="form-group">
+							<label for="nameoutput">Tên output:</label>
+							<input name="nameoutput">
+						</div>
+
+
+						<div class="form-group">
+							<button class="btn btn-danger btn-block" data-rel="back" data-transition="flow">
+								Thêm Watermark
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!--Bitrate -->
+		<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalBit">Bit</button> -->
+		<div class="modal fade" id="myModalBit" role="dialog">
+			<div class="modal-dialog modal-sm">
+				<div class="container1">
+					</br></br>
+					<h1 style="text-align: center;">
+						Tốc độ Bit
+					</h1>
+					<form action="/Bit" method="post" enctype="multipart/form-data">
+
+						<div class="form-group">
+							<input type="file" name="file" onchange="changeHandlerbit(event)"/>
+							<video id="bit" width="300" height="240" controls src="" style="display:none" />
+						</div>
+						<div class="form-group">
+							<label for="Bit">Chọn bitrate:</label>
+							<select class="form-control" name="Bit">
+								<option>144k</option>
+								<option>240k</option>
+								<option>360k</option>
+								<option>480k</option>
+								<option>720k</option>
+								<option>1024k</option>
+							</select>
+							<div class="form-group">
+								<label for="nameoutput">Tên output:</label>
+								<input name="nameoutput">
+							</div>
+						</div>
+						<br />
+						<div class="form-group">
+							<button class="btn btn-danger btn-block" data-rel="back" data-transition="flow">
+								Bit
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+
+		<!--Chỉnh fps -->
+		<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myFPS">Chỉnh fps</button> -->
+		<div class="modal fade" id="myFPS" role="dialog">
+			<div class="modal-dialog modal-sm">
+				<div class="container1">
+					</br></br>
+					<h1 style="text-align: center;">
+						Tốc độ FPS
+					</h1>
+					<form action="/fps" method="post" enctype="multipart/form-data">
+						<div class="form-group" id="log-div">
+							<input type="file" name="file" onchange="changeHandler(event)" />
+							<video id="testtest" width="300" height="240" controls src="" style="display:none"/>	
+						</div>
+						<div class="form-group">
+							<label for="fps">Chọn fps:</label>
+							<input type="text" name="fps" />
+							<div class="form-group">
+								<label for="nameoutput">Tên output:</label>
+								<input name="nameoutput">
+							</div>
+						</div>
+						<br />
+						<div class="form-group">
+							<button class="btn btn-danger btn-block" data-rel="back" data-transition="flow">
+								Chỉnh fps
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+
+		<!--Them am thanh Modal -->
+	<!-- 	<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalAddAudio">Thêm âm thanh</button> -->
+		<div class="modal fade" id="myModalAddAudio" role="dialog">
+			<div class="modal-dialog modal-sm">
+				<div class="container1">
+					</br></br>
+					<h1 style="text-align: center;">
+						Thêm âm thanh video
+					</h1>
+					<form action="/addaudio" method="post" enctype="multipart/form-data">
+						<div class="form-group">
+							<label for="fps">Chọn video</label>
+							<input type="file" name="file" onchange="changeHandlerthemamthanh(event)" />
+							<label for="fps">Chọn file âm thanh</label>
+							<input type="file" name="fileaudio" />
+							<video id="themamthanh" width="300" height="240" controls src="" style="display:none"/></video>
+							<div class="form-group">
+								<label for="nameoutput">Tên output:</label>
+								<input name="nameoutput">
+							</div>
+						</div>
+						<br />
+						<div class="form-group">
+							<button class="btn btn-danger btn-block" data-rel="back" data-transition="flow">
+								Thêm âm thanh
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!--Gộp video-->
+		<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalmerge">Gộp video</button> -->
+		<div class="modal fade" id="myModalmerge" role="dialog">
+			<div class="modal-dialog modal-sm">
+				<div class="container1">
+					</br></br>
+					<h1 style="text-align: center;">
+						Merge video
+					</h1>
+					<form action="/merge" method="post" enctype="multipart/form-data">
+						<div class="form-group">
+							<input type="file" name="file1" onchange="changeHandlerghepvideo(event)"/>
+							<input type="file" name="file2" onchange="changeHandlerghepvideo(event)"/>
+							<video id="ghepvideo" width="300" height="240" controls src="" style="display:none"/></video>
+							<div class="form-group">
+								<label for="nameoutput">Tên output:</label>
+								<input name="nameoutput">
+							</div>
+						</div>
+						<br />
+						<div class="form-group">
+							<button class="btn btn-danger btn-block" data-rel="back" data-transition="flow">
+								Merge
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!--Giao dien-->
+		<br>
+		<div class="row">
+			<div class="col-md-3">
+				<div class="cell text">
+					<img src="img/cut.png" alt="Cắt video" class="img_content" >
+					<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Chuyển định dạng</button>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="cell text">
+					<img src="img/icon.png" alt="Cắt video" class="img_content">
+					
+				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalcut">Cắt frame</button>
+				
+				
+							
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="cell text">	
+						<img src="img/edit.jpg" alt="Cắt video" class="img_content">
+						
+				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalresize">Resize</button>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="cell text">
+				<img src="img/icon.png" alt="Cắt video" class="img_content">	
+				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalcutvideo">Cắt video</button>
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-md-3">
+				<div class="cell text">
+						<img src="img/mute.png" alt="Cắt video" class="img_content">
+				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalnoaudio">Xóa âm thanh</button>
+				
+				
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="cell text">
+						<img src="img/codec.jpg" alt="Cắt video" class="img_content">
+				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myCodecModal">Chỉnh codec</button>
+				
+					
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="cell text">
+					<img src="img/water.jpg" alt="Cắt video" class="img_content" >
+					
+				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalwatermark">Add Watermark</button>
+				
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="cell text" >
+						<img src="img/free.jpg" alt="Cắt video" class="img_content" >
+						
+				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalBit">Chỉnh bitrate</button>
+			
+					
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-md-3">
+			</div>
+			<div class="col-md-3">
+				<div class="cell text">
+					
+					<img src="img/speed.png" alt="Cắt video" class="img_content">	
+					<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myFPS">Chỉnh fps</button>
+					
+					
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="cell text">
+					<img src="img/themamthanh.jpg" alt="Cắt video" class="img_content" >
+						<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalAddAudio">Thêm âm thanh</button>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div >
+						
+				
+				</div>
+			</div>
+		</div>
+		<br>
+		<!--footer-->
+		<footer class="footer">
+			<div class="container">
+				<div class="footer-bottom" style="text-align: center;">
+					<p>©2020 Đại Học Sư Phạm</p>
+				</div>
+			</div>
+		</footer>
+
+
+
+	<!-- Script -->
+	<script>
+		function openForm() {
+			document.getElementById("myModal").style.display = "block";
+		}
+
+		function closeForm() {
+			document.getElementById("myModal").style.display = "none";
+		}
+		function changeHandler(evt) {
+			evt.stopPropagation();
+			evt.preventDefault();
+			var files = evt.target.files;
+
+			var file = files[0];
+
+			var fileReader = new FileReader();
+
+			fileReader.onload = function (progressEvent) {
+				var url = fileReader.result;
+				var myvideo = document.getElementById("testtest");
+				myvideo.src = url;
+				myvideo.style.display = "block"
+			}
+			fileReader.readAsDataURL(file);
+		}
+
+		//chuyendinhdang
+        function changeHandlercdd(evt) {
+            evt.stopPropagation();
+            evt.preventDefault();
+            var files = evt.target.files;
+            var file = files[0];
+            var fileReader = new FileReader();
+            fileReader.onload = function (progressEvent) {
+                var url = fileReader.result;
+                var myvideo = document.getElementById("chuyendinhdang");
+                myvideo.src = url;
+                myvideo.style.display = "block"
+            }
+            fileReader.readAsDataURL(file);
+        }
+
+
+		//catframe
+        function changeHandlercatframe(evt) {
+            evt.stopPropagation();
+            evt.preventDefault();
+            var files = evt.target.files;
+            var file = files[0];
+            var fileReader = new FileReader();
+            fileReader.onload = function (progressEvent) {
+                var url = fileReader.result;
+                var myvideo = document.getElementById("cf");
+                myvideo.src = url;
+                myvideo.style.display = "block"
+            }
+            fileReader.readAsDataURL(file);
+        }
+
+
+		//chỉnh kích thước video
+        function changeHandlerkichthuoc(evt) {
+            evt.stopPropagation();
+            evt.preventDefault();
+            var files = evt.target.files;
+            var file = files[0];
+            var fileReader = new FileReader();
+            fileReader.onload = function (progressEvent) {
+                var url = fileReader.result;
+                var myvideo = document.getElementById("kichthuoc");
+                myvideo.src = url;
+                myvideo.style.display = "block"
+            }
+            fileReader.readAsDataURL(file);
+        }
+
+
+		//chỉnh kích thước video
+        function changeHandlercatvideo(evt) {
+            evt.stopPropagation();
+            evt.preventDefault();
+            var files = evt.target.files;
+            var file = files[0];
+            var fileReader = new FileReader();
+            fileReader.onload = function (progressEvent) {
+                var url = fileReader.result;
+                var myvideo = document.getElementById("catvideo");
+                myvideo.src = url;
+                myvideo.style.display = "block"
+            }
+            fileReader.readAsDataURL(file);
+        }
+
+
+		//xoaam video
+        function changeHandlerxoaam(evt) {
+            evt.stopPropagation();
+            evt.preventDefault();
+            var files = evt.target.files;
+            var file = files[0];
+            var fileReader = new FileReader();
+            fileReader.onload = function (progressEvent) {
+                var url = fileReader.result;
+                var myvideo = document.getElementById("xoaam");
+                myvideo.src = url;
+                myvideo.style.display = "block"
+            }
+            fileReader.readAsDataURL(file);
+        }
+
+
+		//xoaam video
+        function changeHandlercoodec(evt) {
+            evt.stopPropagation();
+            evt.preventDefault();
+            var files = evt.target.files;
+            var file = files[0];
+            var fileReader = new FileReader();
+            fileReader.onload = function (progressEvent) {
+                var url = fileReader.result;
+                var myvideo = document.getElementById("coodec");
+                myvideo.src = url;
+                myvideo.style.display = "block"
+            }
+            fileReader.readAsDataURL(file);
+        }
+
+
+		//xoaam video
+        function changeHandlerwater(evt) {
+            evt.stopPropagation();
+            evt.preventDefault();
+            var files = evt.target.files;
+            var file = files[0];
+            var fileReader = new FileReader();
+            fileReader.onload = function (progressEvent) {
+                var url = fileReader.result;
+                var myvideo = document.getElementById("water");
+                myvideo.src = url;
+                myvideo.style.display = "block"
+            }
+            fileReader.readAsDataURL(file);
+        }
+
+
+		//bit video
+        function changeHandlerbit(evt) {
+            evt.stopPropagation();
+            evt.preventDefault();
+            var files = evt.target.files;
+            var file = files[0];
+            var fileReader = new FileReader();
+            fileReader.onload = function (progressEvent) {
+                var url = fileReader.result;
+                var myvideo = document.getElementById("bit");
+                myvideo.src = url;
+                myvideo.style.display = "block"
+            }
+            fileReader.readAsDataURL(file);
+        }
+
+
+		//thêm am thanh
+        function changeHandlerthemamthanh(evt) {
+            evt.stopPropagation();
+            evt.preventDefault();
+            var files = evt.target.files;
+            var file = files[0];
+            var fileReader = new FileReader();
+            fileReader.onload = function (progressEvent) {
+                var url = fileReader.result;
+                var myvideo = document.getElementById("themamthanh");
+                myvideo.src = url;
+                myvideo.style.display = "block"
+            }
+            fileReader.readAsDataURL(file);
+        }
+
+
+		//thêm am thanh
+        function changeHandlerghepvideo(evt) {
+            evt.stopPropagation();
+            evt.preventDefault();
+            var files = evt.target.files;
+            var file = files[0];
+            var fileReader = new FileReader();
+            fileReader.onload = function (progressEvent) {
+                var url = fileReader.result;
+                var myvideo = document.getElementById("ghepvideo");
+                myvideo.src = url;
+                myvideo.style.display = "block"
+            }
+            fileReader.readAsDataURL(file);
+        }
+	</script>
+</body>
+
+</html>
